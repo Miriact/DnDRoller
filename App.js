@@ -22,9 +22,9 @@ const AppNavigator = createBottomTabNavigator({
     tabBarIcon: ({ focused, tintColor }) => {
       const { routeName } = navigation.state;
       if (routeName === 'Home') {
-        return <Ionicons name='md-home' size={25} color={tintColor} />;
+        return <Ionicons name='home' size={25} color={tintColor} />;
       } else if (routeName === 'Search') {
-        return <Ionicons name='md-search' size={25} color={tintColor} />;
+        return <Ionicons name='search' size={25} color={tintColor} />;
       } else if (routeName === 'Dice') {
         return <Ionicons name='dice-d20' size={25} color={tintColor} />;
       }
