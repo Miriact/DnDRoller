@@ -1,9 +1,16 @@
 import React from 'react';
-import { StyleSheet, Button, Text, ScrollView, View, Alert, TextInput, Picker } from 'react-native';
+import { StyleSheet, Button, Text, ScrollView, View, TextInput, Picker } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import RNShake from 'react-native-shake';
 
 export default class DiceScreen extends React.Component {
     static navigationOptions = { title: 'Dice', };
+
+    componentWillMount() {
+        RNShake.addEventListener('ShakeEvent', (event) => {
+          this.rollAll()
+        });
+      }
 
     constructor(props) {
         super(props);
@@ -109,17 +116,17 @@ export default class DiceScreen extends React.Component {
             total4 += random4
         }
         modded4 += total4;
-        if (Number(this.state.mod4) > 0) {
+        if (Number(this.state.modNum4) === 0 || this.state.modNum4 === NaN) {
+            this.setState({
+                result4: r4 + "total: " + total4
+            });
+        } else if (Number(this.state.mod4) > 0) {
             this.setState({
                 result4: r4 + "total: " + total4 + " + " + this.state.modNum4 + " = " + modded4
             });
         } else if (Number(this.state.mod4) < 0) {
             this.setState({
                 result4: r4 + "total: " + total4 + " - " + this.state.modNum4 + " = " + modded4
-            });
-        } else if (Number(this.state.modNum4) === 0 || this.state.modNum4 === NaN) {
-            this.setState({
-                result4: r4 + "total: " + total4
             });
         }
     }
@@ -135,17 +142,17 @@ export default class DiceScreen extends React.Component {
             total6 += random6
         }
         modded6 += total6;
-        if (Number(this.state.mod6) > 0) {
+        if (Number(this.state.modNum6) === 0 || this.state.modNum6 === NaN) {
+            this.setState({
+                result6: r6 + "total: " + total6
+            });
+        } else if (Number(this.state.mod6) > 0) {
             this.setState({
                 result6: r6 + "total: " + total6 + " + " + this.state.modNum6 + " = " + modded6
             });
         } else if (Number(this.state.mod6) < 0) {
             this.setState({
                 result6: r6 + "total: " + total6 + " - " + this.state.modNum6 + " = " + modded6
-            });
-        } else if (Number(this.state.modNum6) === 0 || this.state.modNum6 === NaN) {
-            this.setState({
-                result6: r6 + "total: " + total6
             });
         }
     }
@@ -161,17 +168,17 @@ export default class DiceScreen extends React.Component {
             total8 += random8
         };
         modded8 += total8;
-        if (Number(this.state.mod8) > 0) {
+        if (Number(this.state.modNum8) === 0 || this.state.modNum8 === NaN) {
+            this.setState({
+                result8: r8 + "total: " + total8
+            });
+        } else if (Number(this.state.mod8) > 0) {
             this.setState({
                 result8: r8 + "total: " + total8 + " + " + this.state.modNum8 + " = " + modded8
             });
         } else if (Number(this.state.mod8) < 0) {
             this.setState({
                 result8: r8 + "total: " + total8 + " - " + this.state.modNum8 + " = " + modded8
-            });
-        } else if (Number(this.state.modNum8) === 0 || this.state.modNum8 === NaN) {
-            this.setState({
-                result8: r8 + "total: " + total8
             });
         }
     }
@@ -187,17 +194,17 @@ export default class DiceScreen extends React.Component {
             total10 += random10
         }
         modded10 += total10;
-        if (Number(this.state.mod10) > 0) {
+        if (Number(this.state.modNum10) === 0 || this.state.modNum10 === NaN) {
+            this.setState({
+                result10: r10 + "total: " + total10
+            });
+        } else if (Number(this.state.mod10) > 0) {
             this.setState({
                 result10: r10 + "total: " + total10 + " + " + this.state.modNum10 + " = " + modded10
             });
         } else if (Number(this.state.mod10) < 0) {
             this.setState({
                 result10: r10 + "total: " + total10 + " - " + this.state.modNum10 + " = " + modded10
-            });
-        } else if (Number(this.state.modNum10) === 0 || this.state.modNum10 === NaN) {
-            this.setState({
-                result10: r10 + "total: " + total10
             });
         }
     }
@@ -213,17 +220,17 @@ export default class DiceScreen extends React.Component {
             total12 += random12
         }
         modded12 += total12;
-        if (Number(this.state.mod12) > 0) {
+        if (Number(this.state.modNum12) === 0 || this.state.modNum12 === NaN) {
+            this.setState({
+                result12: r12 + "total: " + total12
+            });
+        } else if (Number(this.state.mod12) > 0) {
             this.setState({
                 result12: r12 + "total: " + total12 + " + " + this.state.modNum12 + " = " + modded12
             });
         } else if (Number(this.state.mod12) < 0) {
             this.setState({
                 result12: r12 + "total: " + total12 + " - " + this.state.modNum12 + " = " + modded12
-            });
-        } else if (Number(this.state.modNum12) === 0 || this.state.modNum12 === NaN) {
-            this.setState({
-                result12: r12 + "total: " + total12
             });
         }
     }
@@ -239,17 +246,17 @@ export default class DiceScreen extends React.Component {
             total20 += random20
         }
         modded20 += total20;
-        if (Number(this.state.mod20) > 0) {
+        if (Number(this.state.modNum20) === 0 || this.state.modNum20 === NaN) {
+            this.setState({
+                result20: r20 + "total: " + total20
+            });
+        } else if (Number(this.state.mod20) > 0) {
             this.setState({
                 result20: r20 + "total: " + total20 + " + " + this.state.modNum20 + " = " + modded20
             });
         } else if (Number(this.state.mod20) < 0) {
             this.setState({
                 result20: r20 + "total: " + total20 + " - " + this.state.modNum20 + " = " + modded20
-            });
-        } else if (Number(this.state.modNum20) === 0 || this.state.modNum20 === NaN) {
-            this.setState({
-                result20: r20 + "total: " + total20
             });
         }
     }
@@ -262,6 +269,7 @@ export default class DiceScreen extends React.Component {
         this.roll12();
         this.roll20();
     }
+
 
     render() {
         const { navigate } = this.props.navigation;
