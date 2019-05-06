@@ -1,26 +1,87 @@
 import React from 'react';
-import { StyleSheet, Button, Text, View } from 'react-native';
+import { StyleSheet, Button, Text, View, ScrollView, FlatList, AsyncStorage } from 'react-native';
 
 export default class SearchScreen extends React.Component {
   static navigationOptions = {title: 'Search',};
   
+  constructor(props) {
+    super(props);
+    this.state = { count: 0, results: [], searchType: '', refinedSearch: '', };
+}
+
+loadResults = (event) => {
+    const url = this.state.searchType
+    fetch(url)
+        .then((response) => response.json())
+        .then((responseJson) => {
+            this.setState({ count: responseJson.count, results: responseJson.results });
+        })
+        .catch((error) => {
+            Alert.alert(error);
+        });
+}
+
+searchResults = (type) => {
+  this.setState({
+    searchType: 'http://www.dnd5eapi.co/api/' + type
+    });
+  this.loadResults();
+}
+
+refineSearch = (id) => {
+  this.setState({
+    refinedSearch: id
+  });
+  if (id.includes("monster")) {
+    this.props.navigation.navigate('Monster', {url: id});
+  } else if (id.includes("spell")) {
+    this.props.navigation.navigate('Spell', {url: id})};
+  }
+
+storeData = async (data) => {
+  try {
+    await AsyncStorage.setItem('url', data);
+  } catch(error) {
+    Alert.alert('Error saving data');
+  }
+}
+
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View style={styles.container}>
-        <Text>5e Compendium</Text>
-        <Button onPress={() => navigate('Results')} title="Test"/>
+      <ScrollView>
+        <View style={styles.buttons}>
 
-      </View>
+        </View>            
+        
+        <ScrollView style={styles.container}>
+          <Button onPress={() => this.searchResults('spells')} title="Spells"/>
+          <Button onPress={() => this.searchResults('monsters')} title="Monsters"/>
+          <Text>Number of matches: {this.state.count}</Text>
+          <FlatList
+            keyExtractor={item => item.id}
+            renderItem={({ item }) => <Text onPress={() => this.refineSearch(item.url)}>{item.name}</Text>}
+            data={this.state.results}
+          />
+        </ScrollView>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    marginTop: 50,
+    flex: 2,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  buttons: {
+    flex: 2,
+    width: 250,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  }
 });

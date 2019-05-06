@@ -7,8 +7,9 @@ export default class DiceScreen extends React.Component {
     static navigationOptions = { title: 'Dice', };
 
     componentWillMount() {
-        RNShake.addEventListener('ShakeEvent', (event) => {
-          this.rollAll()
+        RNShake.addEventListener('ShakeEvent', () => {
+          this.rollAll();
+          console.log('test successful');
         });
       }
 
@@ -105,6 +106,7 @@ export default class DiceScreen extends React.Component {
             }
         });
     }
+
     roll4 = (event) => {
         let r4 = '';
         let total4 = 0;

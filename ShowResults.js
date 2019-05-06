@@ -1,17 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, Alert } from 'react-native';
+import { StyleSheet, Text, ScrollView, FlatList, Alert } from 'react-native';
 
 export default class ShowResults extends React.Component {
     static navigationOptions = { title: 'Results' };
 
     constructor(props) {
         super(props);
-        this.state = { count: 0, results: [] };
+        this.state = { count: 0, results: [], searchType: '' };
     }
 
 
     loadResults = () => {
-        const url = 'http://www.dnd5eapi.co/api/ability-scores'
+        const url = 'http://www.dnd5eapi.co/api/' + this.state.searchType
         fetch(url)
             .then((response) => response.json())
             .then((responseJson) => {
@@ -26,12 +26,12 @@ export default class ShowResults extends React.Component {
     render() {
         const { navigate } = this.props.navigation;
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <Text>Number of matches: {this.state.count}</Text>
                 <FlatList
-                    renderItem={({ item }) => <Text>{item.result.name}</Text>}
+                    renderItem={({ item }) => <Text>{item.results.name}</Text>}
                 />
-            </View>
+            </ScrollView>
         )
     }
 }

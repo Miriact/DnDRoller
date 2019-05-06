@@ -15,7 +15,8 @@
     "react-native-shake": "^3.3.1",
     "react-native-sound": "^0.10.12",
     "react-native-sound-player": "^0.7.0",
-    "react-navigation": "^3.9.1"
+    "react-navigation": "^3.9.1",
+    "react-navigation-props-mapper": "^1.0.1"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"

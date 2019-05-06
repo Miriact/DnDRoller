@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from './HomeScreen';
 import SearchScreen from './SearchScreen';
 import DiceScreen from './DiceScreen';
+import MonsterScreen from './MonsterScreen';
 
 export default class App extends React.Component {
   render() {
@@ -16,6 +17,7 @@ const AppNavigator = createBottomTabNavigator({
   Home: {screen: HomeScreen},
   Search: {screen: SearchScreen},
   Dice: {screen: DiceScreen},
+  Monster: {screen: MonsterScreen},
 },
 {
   navigationOptions: ({ navigation }) => ({
@@ -33,8 +35,10 @@ const AppNavigator = createBottomTabNavigator({
 }
 );
 
-/* const StackNav = createStackNavigator({
+const StackNav = createStackNavigator({
   Home: {screen: HomeScreen},
   Search: {screen: SearchScreen},
-  Dice: {screen: DiceScreen}
-}) */
+  Dice: {screen: DiceScreen},
+  Monster: {screen: MonsterScreen},
+  // Spell: {screen: SpellScreen},
+})
