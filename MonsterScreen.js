@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, ScrollView, Alert, AsyncStorage, View, } from 'react-native';
+import { StyleSheet, Text, ScrollView, AsyncStorage, View, } from 'react-native';
 
 export default class MonsterScreen extends React.Component {
     static navigationOptions = { title: 'Monster' };
@@ -14,8 +14,21 @@ export default class MonsterScreen extends React.Component {
             special_abilities: [], actions: [], legendary_actions: []};
     }
 
-    loadMonster = () => {
-                fetch(this.state.refinedSearch)
+    componentDidMount() {
+        this.retrieveData();
+    }
+
+    retrieveData = async () => {
+        try {
+            let id = await AsyncStorage.getItem('url');
+            this.loadMonster(id);
+            } catch (error) {
+                console.log(error)
+            }
+          };
+
+    loadMonster = (url) => {
+                fetch(url)
                 .then((response) => response.json())
                 .then((responseJson) => {
                     this.setState({ name: responseJson.name, size: responseJson.size, type: responseJson.type, alignment: responseJson.alignment,
@@ -33,7 +46,7 @@ export default class MonsterScreen extends React.Component {
 
         return (
             <ScrollView style={styles.monsterInfo}>
-                <Text>{this.state.name}</Text>
+                <Text style={styles.title}>{this.state.name}</Text>
                 <Text>{this.state.size} {this.state.type}, {this.state.alignment}</Text>
                 <Text>AC: {this.state.armor_class}, HP: {this.state.hit_points} ({this.state.hit_dice} HD)</Text>
                 <Text>Speed: {this.state.speed}</Text>
@@ -45,19 +58,19 @@ export default class MonsterScreen extends React.Component {
                 <Text>Immunities: {this.state.damage_immunities}</Text>
                 <Text>Languages: {this.state.languages}</Text>
                 <Text>Challenge: {this.state.challenge_rating}</Text>
-                <Text>{"\n"}Special abilities</Text>
+                <Text style={styles.subtitle}>{"\n"}Special abilities</Text>
                 {this.state.special_abilities.map((dataItem) =>
                     <View key={dataItem.name}>
                         <Text>{dataItem.name}: {dataItem.desc}</Text>
                     </View>
                 )}
-                <Text>{"\n"}Actions:</Text>
+                <Text style={styles.subtitle}>{"\n"}Actions:</Text>
                 {this.state.actions.map((dataItem) =>
                     <View key={dataItem.name}>
                         <Text>{dataItem.name}: {dataItem.desc}</Text>
                     </View>
                 )}
-                <Text>{"\n"}Legendary Actions</Text>
+                <Text style={styles.subtitle}>{"\n"}Legendary Actions</Text>
                 {this.state.legendary_actions.map((dataItem) =>
                     <View key={dataItem.name}>
                         <Text>{dataItem.name}: {dataItem.desc}</Text>
@@ -70,10 +83,17 @@ export default class MonsterScreen extends React.Component {
 
 const styles = StyleSheet.create({
     monsterInfo: {
-        flex: 1,
+        flex: 6,
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
         paddingBottom: 100,
     },
+    title: {
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    subtitle: {
+        fontWeight: 'bold',
+    }
 });

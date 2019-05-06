@@ -29,13 +29,12 @@ searchResults = (type) => {
 }
 
 refineSearch = (id) => {
-  this.setState({
-    refinedSearch: id
-  });
+  this.storeData(id);
+
   if (id.includes("monster")) {
-    this.props.navigation.navigate('Monster', {url: id});
+    this.props.navigation.navigate('Monster');
   } else if (id.includes("spell")) {
-    this.props.navigation.navigate('Spell', {url: id})};
+    this.props.navigation.navigate('Spell')};
   }
 
 storeData = async (data) => {

@@ -5,6 +5,7 @@ import HomeScreen from './HomeScreen';
 import SearchScreen from './SearchScreen';
 import DiceScreen from './DiceScreen';
 import MonsterScreen from './MonsterScreen';
+import SpellScreen from './SpellScreen';
 
 export default class App extends React.Component {
   render() {
@@ -13,18 +14,27 @@ export default class App extends React.Component {
   }
 }
 
-const AppNavigator = createBottomTabNavigator({
+/* const AppNavigator = createBottomTabNavigator({
+  Home: {screen: HomeScreen},
+  Search: {screen: SearchScreen},
+  Dice: {screen: DiceScreen},
+}, */
+
+const AppNavigator = createStackNavigator({
   Home: {screen: HomeScreen},
   Search: {screen: SearchScreen},
   Dice: {screen: DiceScreen},
   Monster: {screen: MonsterScreen},
+  Spell: {screen: SpellScreen},
 },
+
+
 {
   navigationOptions: ({ navigation }) => ({
     tabBarIcon: ({ focused, tintColor }) => {
       const { routeName } = navigation.state;
       if (routeName === 'Home') {
-        return <Ionicons name='home' size={25} color={tintColor} />;
+        return <Ionicons name='md-home' size={25} color={tintColor} />;
       } else if (routeName === 'Search') {
         return <Ionicons name='search' size={25} color={tintColor} />;
       } else if (routeName === 'Dice') {
@@ -34,11 +44,3 @@ const AppNavigator = createBottomTabNavigator({
   })
 }
 );
-
-const StackNav = createStackNavigator({
-  Home: {screen: HomeScreen},
-  Search: {screen: SearchScreen},
-  Dice: {screen: DiceScreen},
-  Monster: {screen: MonsterScreen},
-  // Spell: {screen: SpellScreen},
-})

@@ -11,7 +11,7 @@ export default class HomeScreen extends React.Component {
         <Text>Welcome!</Text>
         <Text>Select a function to get started.</Text>
         <Button onPress={() => navigate('Dice')} title="Dice Roller"/>
-        <Button onPress={() => navigate('Search')} title="5e Compendium"/>
+        <Button onPress={() => navigate('Search')} title="5e Compendium 23"/>
       </View>
     );
   }
