@@ -297,13 +297,13 @@ export default class DiceScreen extends React.Component {
                     <Picker
                         selectedValue={this.state.mod4}
                         mode="dropdown"
-                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
+                        style={{ height: 40, width: 60, alignItems: "center", }}
                         onValueChange={(mod4) => this.setState({ mod4 })}>
                         <Picker.Item label="+" value={1} />
                         <Picker.Item label="-" value={-1} />
                     </Picker>
                     <TextInput
-                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
+                        style={{ height: 40, width: 60, alignItems: "center", }}
                         keyboardType="numeric"
                         onChangeText={(modNum4) => this.setState({ modNum4 })}
                         value={this.state.modNum4}
@@ -325,13 +325,13 @@ export default class DiceScreen extends React.Component {
                     <Picker
                         selectedValue={this.state.mod6}
                         mode="dropdown"
-                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
+                        style={{ height: 40, width: 60, alignItems: "center", }}
                         onValueChange={(mod6) => this.setState({ mod6 })}>
                         <Picker.Item label="+" value={1} />
                         <Picker.Item label="-" value={-1} />
                     </Picker>
                     <TextInput
-                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
+                        style={{ height: 40, width: 60, alignItems: "center", }}
                         keyboardType="numeric"
                         onChangeText={(modNum6) => this.setState({ modNum6 })}
                         value={this.state.modNum6}
@@ -354,13 +354,13 @@ export default class DiceScreen extends React.Component {
                     <Picker
                         selectedValue={this.state.mod8}
                         mode="dropdown"
-                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
+                        style={{ height: 40, width: 60, alignItems: "center", }}
                         onValueChange={(mod8) => this.setState({ mod8 })}>
                         <Picker.Item label="+" value={1} />
                         <Picker.Item label="-" value={-1} />
                     </Picker>
                     <TextInput
-                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
+                        style={{ height: 40, width: 60, alignItems: "center", }}
                         keyboardType="numeric"
                         onChangeText={(modNum8) => this.setState({ modNum8 })}
                         value={this.state.modNum8}
@@ -383,13 +383,13 @@ export default class DiceScreen extends React.Component {
                     <Picker
                         selectedValue={this.state.mod10}
                         mode="dropdown"
-                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
+                        style={{ height: 40, width: 60, alignItems: "center", }}
                         onValueChange={(mod10) => this.setState({ mod10 })}>
                         <Picker.Item label="+" value={1} />
                         <Picker.Item label="-" value={-1} />
                     </Picker>
                     <TextInput
-                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
+                        style={{ height: 40, width: 60, alignItems: "center", }}
                         keyboardType="numeric"
                         onChangeText={(modNum10) => this.setState({ modNum10 })}
                         value={this.state.modNum10}
@@ -412,13 +412,13 @@ export default class DiceScreen extends React.Component {
                     <Picker
                         selectedValue={this.state.mod12}
                         mode="dropdown"
-                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
+                        style={{ height: 40, width: 60, alignItems: "center", }}
                         onValueChange={(mod12) => this.setState({ mod12 })}>
                         <Picker.Item label="+" value={1} />
                         <Picker.Item label="-" value={-1} />
                     </Picker>
                     <TextInput
-                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
+                        style={{ height: 40, width: 60, alignItems: "center", }}
                         keyboardType="numeric"
                         onChangeText={(modNum12) => this.setState({ modNum12 })}
                         value={this.state.modNum12}
@@ -441,13 +441,13 @@ export default class DiceScreen extends React.Component {
                     <Picker
                         selectedValue={this.state.mod20}
                         mode="dropdown"
-                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
+                        style={{ height: 40, width: 60, alignItems: "center", }}
                         onValueChange={(mod20) => this.setState({ mod20 })}>
                         <Picker.Item label="+" value={1} />
                         <Picker.Item label="-" value={-1} />
                     </Picker>
                     <TextInput
-                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
+                        style={{ height: 40, width: 60, alignItems: "center", }}
                         keyboardType="numeric"
                         onChangeText={(modNum20) => this.setState({ modNum20 })}
                         value={this.state.modNum20}

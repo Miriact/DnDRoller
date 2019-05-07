@@ -1,5 +1,5 @@
 import React from 'react';
-import {createAppContainer, createBottomTabNavigator, createStackNavigator} from 'react-navigation';
+import {createAppContainer, createStackNavigator} from 'react-navigation';
 import HomeScreen from './HomeScreen';
 import SearchScreen from './SearchScreen';
 import DiceScreen from './DiceScreen';
@@ -12,12 +12,6 @@ export default class App extends React.Component {
     return <AppContainer/>;
   }
 }
-
-/* const AppNavigator = createBottomTabNavigator({
-  Home: {screen: HomeScreen},
-  Search: {screen: SearchScreen},
-  Dice: {screen: DiceScreen},
-}, */
 
 const AppNavigator = createStackNavigator({
   Home: {screen: HomeScreen},
