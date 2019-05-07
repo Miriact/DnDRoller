@@ -6,7 +6,7 @@ export default class SearchScreen extends React.Component {
   
   constructor(props) {
     super(props);
-    this.state = { count: 0, results: [], searchType: '', refinedSearch: '', };
+    this.state = { count: 0, results: [], searchType: '', };
 }
 
 loadResults = (event) => {
@@ -56,7 +56,7 @@ storeData = async (data) => {
         <ScrollView style={styles.container}>
           <Button onPress={() => this.searchResults('spells')} title="Spells"/>
           <Button onPress={() => this.searchResults('monsters')} title="Monsters"/>
-          <Text>Number of matches: {this.state.count}</Text>
+          <Text>Number of matches: {this.state.count}{"\n"}</Text>
           <FlatList
             keyExtractor={item => item.id}
             renderItem={({ item }) => <Text onPress={() => this.refineSearch(item.url)}>{item.name}</Text>}

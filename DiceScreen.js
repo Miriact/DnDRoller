@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, Button, Text, ScrollView, View, TextInput, Picker } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { StyleSheet, Button, Text, ScrollView, View, TextInput, Picker, Image } from 'react-native';
 import RNShake from 'react-native-shake';
 
 export default class DiceScreen extends React.Component {
@@ -269,29 +268,42 @@ export default class DiceScreen extends React.Component {
         this.roll8();
         this.roll10();
         this.roll12();
-        this.roll20();
+        this.roll20();   
     }
 
+    resetAll = (event) => {
+        this.setState({
+            four: 1, six: 1, eight: 1, ten: 1, twelve: 1, twenty: 1,
+            result4: '', result6: '', result8: '', result10: '', result12: '', result20: '',
+            mod4: 1, mod6: 1, mod8: 1, mod10: 1, mod12: 1, mod20: 1,
+            modNum4: 0, modNum6: 0, modNum8: 0, modNum10: 0, modNum12: 0, modNum20: 0,
+        })
+    }
 
     render() {
         const { navigate } = this.props.navigation;
         return (
             <ScrollView style={styles.container}>
-                <Text>Dice Roller</Text>
+                <Text style={{fontSize: 20, fontWeight: 'bold', }}>Dice Roller</Text>
                 <View style={styles.dice}>
-                    <Ionicons name="dice-d4" size={20} color={"black"} />
+                    <Image
+                        source={require('./assets/d4.png')}
+                        style={{width:40, height:40}}
+                    />
                     <Button onPress={this.d4} title="-" />
                     <Text>{this.state.four}</Text>
                     <Button onPress={this.i4} title="+" />
+
                     <Picker
                         selectedValue={this.state.mod4}
                         mode="dropdown"
-                        style={{ height: 50, width: 60, color: "black", borderColor: "grey", alignItems: "center", }}
+                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
                         onValueChange={(mod4) => this.setState({ mod4 })}>
                         <Picker.Item label="+" value={1} />
                         <Picker.Item label="-" value={-1} />
                     </Picker>
                     <TextInput
+                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
                         keyboardType="numeric"
                         onChangeText={(modNum4) => this.setState({ modNum4 })}
                         value={this.state.modNum4}
@@ -303,19 +315,23 @@ export default class DiceScreen extends React.Component {
                 </View>
 
                 <View style={styles.dice}>
-                    <Ionicons name="dice-d6" size={20} color={"black"} />
+                    <Image
+                        source={require('./assets/d6.png')}
+                        style={{width:40, height:40}}
+                    />
                     <Button onPress={this.d6} title="-" />
                     <Text>{this.state.six}</Text>
                     <Button onPress={this.i6} title="+" />
                     <Picker
                         selectedValue={this.state.mod6}
                         mode="dropdown"
-                        style={{ height: 50, width: 60, color: "black", borderColor: "grey", alignItems: "center", }}
+                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
                         onValueChange={(mod6) => this.setState({ mod6 })}>
                         <Picker.Item label="+" value={1} />
                         <Picker.Item label="-" value={-1} />
                     </Picker>
                     <TextInput
+                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
                         keyboardType="numeric"
                         onChangeText={(modNum6) => this.setState({ modNum6 })}
                         value={this.state.modNum6}
@@ -328,19 +344,23 @@ export default class DiceScreen extends React.Component {
                 </View>
 
                 <View style={styles.dice}>
-                    <Ionicons name="dice-d8" size={20} color={"black"} />
+                    <Image
+                        source={require('./assets/d8.png')}
+                        style={{width:40, height:40}}
+                    />
                     <Button onPress={this.d8} title="-" />
                     <Text>{this.state.eight}</Text>
                     <Button onPress={this.i8} title="+" />
                     <Picker
                         selectedValue={this.state.mod8}
                         mode="dropdown"
-                        style={{ height: 50, width: 60, color: "black", borderColor: "grey", alignItems: "center", }}
+                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
                         onValueChange={(mod8) => this.setState({ mod8 })}>
                         <Picker.Item label="+" value={1} />
                         <Picker.Item label="-" value={-1} />
                     </Picker>
                     <TextInput
+                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
                         keyboardType="numeric"
                         onChangeText={(modNum8) => this.setState({ modNum8 })}
                         value={this.state.modNum8}
@@ -353,19 +373,23 @@ export default class DiceScreen extends React.Component {
                 </View>
 
                 <View style={styles.dice}>
-                    <Ionicons name="dice-d10" size={20} color={"black"} />
+                    <Image
+                        source={require('./assets/d10.png')}
+                        style={{width:40, height:40}}
+                    />
                     <Button onPress={this.d10} title="-" />
                     <Text>{this.state.ten}</Text>
                     <Button onPress={this.i10} title="+" />
                     <Picker
                         selectedValue={this.state.mod10}
                         mode="dropdown"
-                        style={{ height: 50, width: 60, color: "black", borderColor: "grey", alignItems: "center", }}
+                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
                         onValueChange={(mod10) => this.setState({ mod10 })}>
                         <Picker.Item label="+" value={1} />
                         <Picker.Item label="-" value={-1} />
                     </Picker>
                     <TextInput
+                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
                         keyboardType="numeric"
                         onChangeText={(modNum10) => this.setState({ modNum10 })}
                         value={this.state.modNum10}
@@ -378,19 +402,23 @@ export default class DiceScreen extends React.Component {
                 </View>
 
                 <View style={styles.dice}>
-                    <Ionicons name="dice-d12" size={20} color={"black"} />
+                    <Image
+                        source={require('./assets/d12.png')}
+                        style={{width:40, height:40}}
+                    />
                     <Button onPress={this.d12} title="-" />
                     <Text>{this.state.twelve}</Text>
                     <Button onPress={this.i12} title="+" />
                     <Picker
                         selectedValue={this.state.mod12}
                         mode="dropdown"
-                        style={{ height: 50, width: 60, color: "black", borderColor: "grey", alignItems: "center", }}
+                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
                         onValueChange={(mod12) => this.setState({ mod12 })}>
                         <Picker.Item label="+" value={1} />
                         <Picker.Item label="-" value={-1} />
                     </Picker>
                     <TextInput
+                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
                         keyboardType="numeric"
                         onChangeText={(modNum12) => this.setState({ modNum12 })}
                         value={this.state.modNum12}
@@ -403,19 +431,23 @@ export default class DiceScreen extends React.Component {
                 </View>
 
                 <View style={styles.dice}>
-                    <Ionicons name="dice-d20" size={20} color={"black"} />
+                    <Image
+                        source={require('./assets/d20.png')}
+                        style={{width:40, height:40}}
+                    />
                     <Button onPress={this.d20} title="-" />
                     <Text>{this.state.twenty}</Text>
                     <Button onPress={this.i20} title="+" />
                     <Picker
                         selectedValue={this.state.mod20}
                         mode="dropdown"
-                        style={{ height: 50, width: 60, color: "black", borderColor: "grey", alignItems: "center", }}
+                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
                         onValueChange={(mod20) => this.setState({ mod20 })}>
                         <Picker.Item label="+" value={1} />
                         <Picker.Item label="-" value={-1} />
                     </Picker>
                     <TextInput
+                        style={{ flex: 1, height: 40, width: 60, alignItems: "center", }}
                         keyboardType="numeric"
                         onChangeText={(modNum20) => this.setState({ modNum20 })}
                         value={this.state.modNum20}
@@ -428,6 +460,7 @@ export default class DiceScreen extends React.Component {
                 </View>
 
                 <Button onPress={(event) => { this.rollAll(); }} title="Roll All!" />
+                <Button onPress={(event) => { this.resetAll(); }} title="Reset" />
             </ScrollView>
         );
     }
@@ -440,11 +473,22 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around',
     },
-
     dice: {
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around',
     },
+    number: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    mods: {
+        flex: 1,
+        height: 40,
+        width: 60, 
+        borderColor: 'grey',
+        alignItems: 'center',
+    }
 });

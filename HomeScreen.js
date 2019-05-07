@@ -10,8 +10,10 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <Text>Welcome!</Text>
         <Text>Select a function to get started.</Text>
-        <Button onPress={() => navigate('Dice')} title="Dice Roller"/>
-        <Button onPress={() => navigate('Search')} title="5e Compendium 23"/>
+        <View>
+          <Button onPress={() => navigate('Dice')} title="Dice Roller"/>
+          <Button onPress={() => navigate('Search')} title="5e Compendium"/>
+        </View>
       </View>
     );
   }
@@ -19,9 +21,16 @@ export default class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 3,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  buttons: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
   },
 });

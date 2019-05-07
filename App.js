@@ -1,6 +1,5 @@
 import React from 'react';
 import {createAppContainer, createBottomTabNavigator, createStackNavigator} from 'react-navigation';
-import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from './HomeScreen';
 import SearchScreen from './SearchScreen';
 import DiceScreen from './DiceScreen';
@@ -26,21 +25,5 @@ const AppNavigator = createStackNavigator({
   Dice: {screen: DiceScreen},
   Monster: {screen: MonsterScreen},
   Spell: {screen: SpellScreen},
-},
-
-
-{
-  navigationOptions: ({ navigation }) => ({
-    tabBarIcon: ({ focused, tintColor }) => {
-      const { routeName } = navigation.state;
-      if (routeName === 'Home') {
-        return <Ionicons name='md-home' size={25} color={tintColor} />;
-      } else if (routeName === 'Search') {
-        return <Ionicons name='search' size={25} color={tintColor} />;
-      } else if (routeName === 'Dice') {
-        return <Ionicons name='dice-d20' size={25} color={tintColor} />;
-      }
-    }
-  })
 }
 );
